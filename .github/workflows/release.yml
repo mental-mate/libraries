@@ -40,10 +40,7 @@ jobs:
 
       - name: publish to maven central
         run: |
-          echo "storing gpg file location in the KEY_FILE variable"
           KEY_FILE="${GITHUB_WORKSPACE}/key.gpg"
-          echo "stored KEY_FILE variable"
-          echo "using key file ${KEY_FILE}"
           echo "${{ secrets.SIGNING_KEY }}" | gpg --dearmor > $KEY_FILE
           echo "start generating gradle.properties"
           echo "sonatypeUsername=${{ secrets.MAVEN_CENTRAL_USER }}" >> ./gradle.properties
