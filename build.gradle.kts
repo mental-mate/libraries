@@ -4,7 +4,7 @@ subprojects {
     extra["projectType"] = "library"
     extra["projectUrl"] = "https://github.com/mental-mate/libraries.git"
 
-    version = "1.2.0"
+    version = "1.3.0"
 
     dependencies {
         api("tech.harmonysoft:inpertio-client-kotlin-spring:1.5.0")
