@@ -40,17 +40,14 @@ jobs:
 
       - name: publish to maven central
         run: |
-          echo "generating signing key"
-          echo "${{ secrets.SIGNING_KEY }}" | gpg --dearmor > ./key.gpg
-          echo "generated signing key"
-          cat ./key.gpg
+          CURRENT_DIR=`pwd`
+          KEY_FILE=$CURRENT_DIF/key.gpg
+          echo "${{ secrets.SIGNING_KEY }}" | gpg --dearmor > $KEY_FILE
           echo "start generating gradle.properties"
           echo "sonatypeUsername=${{ secrets.MAVEN_CENTRAL_USER }}" >> ./gradle.properties
           echo "sonatypePassword=${{ secrets.MAVEN_CENTRAL_PASSWORD }}" >> ./gradle.properties
           echo "sonatypePassword=${{ secrets.MAVEN_CENTRAL_PASSWORD }}" >> ./gradle.properties
           echo "signing.keyId=${{ secrets.SIGNING_KEY_ID}}" >> ./gradle.properties
-          echo "signing.secretKeyRingFile=./key.gpg" >> ./gradle.properties
+          echo "signing.secretKeyRingFile=$KEY_FILE" >> ./gradle.properties
           echo "signing.password=${{ secrets.SIGNING_PASSWORD }}" >> ./gradle.properties
-          echo "resulting gradle.properties:"
-          cat ./gradle.properties
           ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
