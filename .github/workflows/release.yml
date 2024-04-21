@@ -6,7 +6,45 @@ on:
 
 jobs:
   build:
-    uses: harmonysoft-tech/ci/.github/workflows/library-gradle-release-maven-central.yml@main
-    secrets: inherit
+    if: "!contains(github.event.commits[0].message, 'release-')"
+    runs-on: ubuntu-22.04
+    environment: ci
     permissions:
       contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: setup gradle
+        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+
+      - name: run tests
+        run: |
+          ./gradlew test
+
+      - name: increment project version
+        run: |
+          ./gradlew release-paperwork
+          git push
+
+      - name: build gradle distributions
+        run: ./gradlew ${{ inputs.BUILD_ACTION }} -x test
+
+      - name: build documentation jar
+        run: ./gradlew docJar
+
+      - name: publish to maven central
+        run: |
+          echo "${{ secrets.SIGNING_KEY }}" | gpg --dearmor > ./key.gpg
+          echo "sonatypeUsername=${{ secrets.MAVEN_CENTRAL_USER }}" >> ./gradle.properties
+          echo "sonatypePassword=${{ secrets.MAVEN_CENTRAL_PASSWORD }}" >> ./gradle.properties
+          echo "sonatypePassword=${{ secrets.MAVEN_CENTRAL_PASSWORD }}" >> ./gradle.properties
+          echo "signing.keyId=${{ secrets.SIGNING_KEY_ID}}" >> ./gradle.properties
+          echo "signing.secretKeyRingFile=./key.gpg" >> ./gradle.properties
+          echo "signing.password=${{ secrets.SIGNING_PASSWORD }}" >> ./gradle.properties
+          ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
