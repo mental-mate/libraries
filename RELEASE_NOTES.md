@@ -1,3 +1,5 @@
+## v1.8.0 released on 21 Apr 2024 UTC
+  * 93f7d03f84a0aacf3c4a2b547602e1148241afab added llm-test module
 ## v1.7.0 released on 21 Apr 2024 UTC
   * 0327d27f8d1cfd054a254c1dd89357a70582a371 setting up CI
 ## v1.6.0 released on 21 Apr 2024 UTC
