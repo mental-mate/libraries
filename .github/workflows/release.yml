@@ -40,6 +40,7 @@ jobs:
 
       - name: publish to maven central
         run: |
+          pwd
           CURRENT_DIR=$(pwd)
           KEY_FILE=$CURRENT_DIF/key.gpg
           echo "using key file $KEY_FILE"
