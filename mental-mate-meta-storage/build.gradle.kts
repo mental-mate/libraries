@@ -1,0 +1,1 @@
+extra["projectDescription"] = "common metadata storage API"
