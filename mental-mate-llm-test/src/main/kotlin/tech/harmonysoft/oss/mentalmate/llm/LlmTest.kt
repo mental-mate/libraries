@@ -1,10 +1,12 @@
 package tech.harmonysoft.oss.mentalmate.llm
 
 import java.util.concurrent.atomic.AtomicReference
+import org.springframework.context.annotation.Primary
 import org.springframework.stereotype.Component
 import tech.harmonysoft.oss.test.TestAware
 import tech.harmonysoft.oss.test.util.TestUtil.fail
 
+@Primary
 @Component
 class LlmTest : Llm, TestAware {
 
