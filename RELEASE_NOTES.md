@@ -1,3 +1,5 @@
+## v1.9.0 released on 25 Apr 2024 UTC
+  * 3a051316ddbe60b89e7d5e1752e172e797e05f30 LlmTest is @Primary now
 ## v1.8.0 released on 21 Apr 2024 UTC
   * 93f7d03f84a0aacf3c4a2b547602e1148241afab added llm-test module
 ## v1.7.0 released on 21 Apr 2024 UTC
