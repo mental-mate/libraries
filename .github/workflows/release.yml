@@ -32,7 +32,7 @@ jobs:
           ./gradlew release-paperwork
           git push
 
-      - name: build gradle distributions
+      - name: build the project
         run: ./gradlew build -x test
 
       - name: build documentation jar
