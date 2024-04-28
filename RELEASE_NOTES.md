@@ -1,3 +1,5 @@
+## v2.0.0 released on 28 Apr 2024 UTC
+  * 1fc631b8f045567e341700e60ba6618a4de5e04f apply the latest harmonysoft libs
 ## v1.9.0 released on 25 Apr 2024 UTC
   * 3a051316ddbe60b89e7d5e1752e172e797e05f30 LlmTest is @Primary now
 ## v1.8.0 released on 21 Apr 2024 UTC
