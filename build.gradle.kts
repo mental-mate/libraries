@@ -1,4 +1,4 @@
-val harmonysoftLibsVersion by extra { "3.1.0" }
+val harmonysoftLibsVersion by extra { "3.2.0" }
 
 subprojects {
     extra["projectType"] = "library"
