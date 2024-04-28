@@ -4,7 +4,7 @@ subprojects {
     extra["projectType"] = "library"
     extra["projectUrl"] = "https://github.com/mental-mate/libraries.git"
 
-    version = "2.0.0"
+    version = "2.1.0"
 
     dependencies {
         api("tech.harmonysoft:harmonysoft-slf4j-spring:$harmonysoftLibsVersion")

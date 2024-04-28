@@ -1,3 +1,5 @@
+## v2.1.0 released on 28 Apr 2024 UTC
+  * c84750dfff6dbfd7ee5462bbfdd74b939dd432c4 harmonysoft-libs 3.1.0
 ## v2.0.0 released on 28 Apr 2024 UTC
   * 1fc631b8f045567e341700e60ba6618a4de5e04f apply the latest harmonysoft libs
 ## v1.9.0 released on 25 Apr 2024 UTC
