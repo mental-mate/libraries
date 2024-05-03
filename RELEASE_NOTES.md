@@ -1,3 +1,5 @@
+## v2.3.0 released on 03 May 2024 UTC
+  * b105c82ff715c7b7ae7ecc0bdc200a06c66d54df * gradle-dist 1.10.0 * added ability to expand string templates
 ## v2.2.0 released on 03 May 2024 UTC
   * e4019f4228617171e45187170f6b80477c5eddce correct test data storage infra
 ## v2.1.0 released on 28 Apr 2024 UTC
