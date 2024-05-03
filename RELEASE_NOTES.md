@@ -1,3 +1,5 @@
+## v2.2.0 released on 03 May 2024 UTC
+  * e4019f4228617171e45187170f6b80477c5eddce correct test data storage infra
 ## v2.1.0 released on 28 Apr 2024 UTC
   * c84750dfff6dbfd7ee5462bbfdd74b939dd432c4 harmonysoft-libs 3.1.0
 ## v2.0.0 released on 28 Apr 2024 UTC
