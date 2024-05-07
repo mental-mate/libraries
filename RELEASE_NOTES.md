@@ -1,3 +1,5 @@
+## v2.4.0 released on 07 May 2024 UTC
+  * ba04d4d7d43eb5cf58b099cc0d59799ff12b14c8 * use default template pattern which doesn't conflict with built-in spring variables syntax * allow to use custom template pattern
 ## v2.3.0 released on 03 May 2024 UTC
   * b105c82ff715c7b7ae7ecc0bdc200a06c66d54df * gradle-dist 1.10.0 * added ability to expand string templates
 ## v2.2.0 released on 03 May 2024 UTC
