@@ -12,7 +12,13 @@ class DataStorageStepDefinitions {
     @Given("^there is a data file ([^\\s]+) with the following content:$")
     fun createFile(path: String, content: String) {
         val i = path.lastIndexOf("/")
-        val dir = DataStorageDir(path.substring(0, i + 1))
+        val dirPath = path.substring(0, i + 1)
+        val dirPathToUse = if (dirPath == "/") {
+            ""
+        } else {
+            dirPath
+        }
+        val dir = DataStorageDir(dirPathToUse)
         storage.createFile(dir, path.substring(i + 1), content)
     }
 }
