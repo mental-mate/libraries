@@ -1,3 +1,5 @@
+## v2.5.0 released on 08 May 2024 UTC
+  * d649618d1f3fed56637933c0cd6a868261f70213 represent root test dir's path as an empty string
 ## v2.4.0 released on 07 May 2024 UTC
   * ba04d4d7d43eb5cf58b099cc0d59799ff12b14c8 * use default template pattern which doesn't conflict with built-in spring variables syntax * allow to use custom template pattern
 ## v2.3.0 released on 03 May 2024 UTC
