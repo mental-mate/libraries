@@ -4,49 +4,57 @@ import java.util.concurrent.ConcurrentHashMap
 import org.springframework.context.annotation.Primary
 import org.springframework.stereotype.Component
 import tech.harmonysoft.oss.common.collection.CollectionInitializer
-import tech.harmonysoft.oss.common.collection.mapFirstNotNull
 import tech.harmonysoft.oss.mentalmate.storage.data.DataStorage
 import tech.harmonysoft.oss.mentalmate.storage.data.DataStorageDir
-import tech.harmonysoft.oss.mentalmate.storage.data.DataStorageFile
 
 @Primary
 @Component
-class MemoryDataStorage : DataStorage {
+class MemoryDataStorage : DataStorage<InMemoryDataFile> {
 
-    private val data = ConcurrentHashMap<DataStorageDir, MutableCollection<DataStorageEntry>>()
+    private val data = ConcurrentHashMap<DataStorageDir, MutableCollection<InMemoryDataFile>>()
 
-    override fun listFiles(dir: DataStorageDir): Collection<DataStorageFile> {
-        return data[dir]?.mapNotNull {
-            if (it is DataStorageEntry.File) {
-                it.data
-            } else {
-                null
-            }
-        } ?: emptyList()
+    override fun listFiles(dir: DataStorageDir): Collection<InMemoryDataFile> {
+        return data[normalize(dir)] ?: emptyList()
     }
 
     override fun getDir(path: String): DataStorageDir {
-        return DataStorageDir(path)
+        return normalize(DataStorageDir(path))
     }
 
-    override fun createFile(dir: DataStorageDir, name: String, content: String): DataStorageFile {
-        data[dir]?.mapFirstNotNull {
-            if (it is DataStorageEntry.File && it.data.name == name) {
-                it
-            } else {
-                null
-            }
-        }?.let {
-            return it.data
+    override fun createFile(dir: DataStorageDir, name: String, content: ByteArray): InMemoryDataFile {
+        val normalizedDir = normalize(dir)
+        data[normalizedDir]?.removeIf {
+            it.name == name
         }
 
-        val entries = data.getOrPut(dir, CollectionInitializer.mutableSet())
-        val result = InMemoryDataFile(dir, name, content)
-        entries += DataStorageEntry.File(result)
-        return result
+        val entries = data.getOrPut(normalizedDir, CollectionInitializer.mutableSet())
+        return InMemoryDataFile(normalizedDir, name, content).also {
+            entries += it
+        }
     }
 
-    override fun clear(dir: DataStorageDir) {
-        data.remove(dir)
+    override fun delete(file: InMemoryDataFile) {
+        val i = file.name.lastIndexOf("/")
+        val dirPath = if (i < 0) {
+            "/"
+        } else {
+            file.name.substring(0, i)
+        }
+        data[getDir(dirPath)]?.removeIf { it.name == file.name }
+    }
+
+    private fun normalize(dir: DataStorageDir): DataStorageDir {
+        var result = dir.path
+        if (!result.startsWith("/")) {
+            result = "/$result"
+        }
+        if (!result.endsWith("/")) {
+            result = "$result/"
+        }
+        return if (result == dir.path) {
+            dir
+        } else {
+            DataStorageDir(result)
+        }
     }
 }

@@ -1,4 +1,5 @@
 val harmonysoftLibsVersion by extra { "3.2.0" }
+val awsSdkVersion by extra { "1.2.7" }
 
 subprojects {
     extra["projectType"] = "library"

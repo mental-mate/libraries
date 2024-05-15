@@ -7,7 +7,7 @@ import tech.harmonysoft.oss.mentalmate.storage.data.DataStorageDir
 
 class DataStorageStepDefinitions {
 
-    @Autowired private lateinit var storage: DataStorage
+    @Autowired private lateinit var storage: DataStorage<*>
 
     @Given("^there is a data file ([^\\s]+) with the following content:$")
     fun createFile(path: String, content: String) {
@@ -19,6 +19,6 @@ class DataStorageStepDefinitions {
             dirPath
         }
         val dir = DataStorageDir(dirPathToUse)
-        storage.createFile(dir, path.substring(i + 1), content)
+        storage.createFile(dir, path.substring(i + 1), content.toByteArray())
     }
 }
