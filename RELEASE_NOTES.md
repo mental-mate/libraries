@@ -1,3 +1,5 @@
+## v2.7.0 released on 15 May 2024 UTC
+  * 878b2d1b08248ace710ed4ec60d3d615d7408d2b correct memory data storage processing
 ## v2.6.0 released on 15 May 2024 UTC
   * ccf0e0f04b9b73a59393fcb1261930ca07b44c35 AWS S3 data storage implementation
 ## v2.5.0 released on 08 May 2024 UTC
