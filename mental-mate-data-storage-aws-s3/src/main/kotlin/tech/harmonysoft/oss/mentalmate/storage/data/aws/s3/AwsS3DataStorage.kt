@@ -5,13 +5,11 @@ import aws.sdk.kotlin.services.s3.model.DeleteObjectRequest
 import aws.sdk.kotlin.services.s3.model.ListObjectsRequest
 import aws.sdk.kotlin.services.s3.model.PutObjectRequest
 import aws.smithy.kotlin.runtime.content.ByteStream
-import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.runBlocking
 import org.slf4j.Logger
 import org.springframework.stereotype.Component
 import tech.harmonysoft.oss.mentalmate.storage.data.DataStorage
 import tech.harmonysoft.oss.mentalmate.storage.data.DataStorageDir
-import tech.harmonysoft.oss.mentalmate.storage.data.DataStorageFile
 import tech.harmonysoft.oss.mentalmate.storage.data.aws.s3.config.AwsS3ConfigProvider
 import tech.harmonysoft.oss.mentalmate.storage.data.aws.s3.model.AwsS3File
 import tech.harmonysoft.oss.mentalmate.util.config.ConfigurationHelper

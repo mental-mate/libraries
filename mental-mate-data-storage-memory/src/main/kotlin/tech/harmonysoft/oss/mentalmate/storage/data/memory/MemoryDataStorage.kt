@@ -48,8 +48,8 @@ class MemoryDataStorage : DataStorage<InMemoryDataFile> {
         if (!result.startsWith("/")) {
             result = "/$result"
         }
-        if (!result.endsWith("/")) {
-            result = "$result/"
+        if (result.endsWith("/")) {
+            result = result.substring(0, result.length - 1)
         }
         return if (result == dir.path) {
             dir

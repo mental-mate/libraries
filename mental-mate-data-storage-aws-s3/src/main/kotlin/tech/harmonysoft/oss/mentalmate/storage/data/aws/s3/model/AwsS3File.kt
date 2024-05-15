@@ -34,10 +34,10 @@ data class AwsS3File(
                 bucket = bucketName
                 key = name
             }) {
-                it.body?.let {
-                    deferred.complete(it.toByteArray()) ?: run {
-                        logger.error("can not get content for AWS S3 file {} from bucket {}", name, bucketName)
-                    }
+                it.body?.let { bytes ->
+                    deferred.complete(bytes.toByteArray())
+                } ?: run {
+                    logger.error("can not get content for AWS S3 file {} from bucket {}", name, bucketName)
                 }
             }
         }

@@ -1,7 +1,6 @@
 package tech.harmonysoft.oss.mentalmate.util.checksum
 
 import java.io.InputStream
-import java.lang.reflect.ParameterizedType
 import java.security.MessageDigest
 
 object ChecksumUtil {
