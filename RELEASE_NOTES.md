@@ -1,3 +1,5 @@
+## v2.8.0 released on 22 May 2024 UTC
+  * c911ff28dcf70bc6d0e2141d7b57bc2488680195 gradle-dist 1.12.0
 ## v2.7.0 released on 15 May 2024 UTC
   * 878b2d1b08248ace710ed4ec60d3d615d7408d2b correct memory data storage processing
 ## v2.6.0 released on 15 May 2024 UTC
